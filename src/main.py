@@ -1019,22 +1019,37 @@ screw_insert_height = 4.2
 screw_insert_bottom_radius = 5.31 / 2.0
 screw_insert_top_radius = 5.1 / 2
 
+thread_insert_radius_M2_5 = 3.5 / 2.0
+
 screw_insert_width = 2
 bottom_height = 2
 
 screw_insert_outer = translate(0, 0, bottom_height)(
     cylinderr1r2(
-        screw_insert_bottom_radius + screw_insert_width,
-        screw_insert_top_radius + screw_insert_width,
+        thread_insert_radius_M2_5 + screw_insert_width,
+        thread_insert_radius_M2_5 + screw_insert_width,
         screw_insert_height + screw_insert_width,
     )
 )
 screw_insert_inner = translate(0, 0, bottom_height)(
     cylinderr1r2(
-        screw_insert_bottom_radius, screw_insert_top_radius, screw_insert_height
+        thread_insert_radius_M2_5, thread_insert_radius_M2_5, screw_insert_height
     )
 )
 
+screw_insert_outer_thumb = translate(0, 0, bottom_height)(
+    cylinderr1r2(
+        screw_insert_bottom_radius + screw_insert_width - 1.5,
+        screw_insert_top_radius + screw_insert_width - 1.75,
+        screw_insert_height + 2 + screw_insert_width,
+    )
+)
+
+screw_insert_inner_thumb = translate(0, 0, bottom_height - screw_insert_width)(
+    cylinderr1r2(
+        thread_insert_radius_M2_5, thread_insert_radius_M2_5, screw_insert_height + 2
+    )
+)
 
 def screw_insert(col, row, shape, ox, oy):
     postiion = point_on_grid(row, col, 0, 0, 0)
@@ -1044,14 +1059,13 @@ def screw_insert(col, row, shape, ox, oy):
     return translate(*postiion)(shape)
 
 
-def screw_insert_all_shapes(shape):
+def screw_insert_all_shapes(edge_shape, thumb_shape):
     return union(
-        screw_insert(2, 0, shape, -5.3, 5.9),
-        screw_insert(num_cols - 1, 0, shape, 6.7, 5.5),
-        screw_insert(num_cols - 1, num_rows_for_col(num_cols - 1), shape, 6.8, 14.4),
-        screw_insert(0, 0, shape, -6.2, -6),
-        screw_insert(1, max_num_rows + 1, shape, -9.8, 3.4),
-        screw_insert(0, max_num_rows - 1, shape, -17.4, -2),
+        screw_insert(num_cols - 1, 0, edge_shape, 6.7, 5.5),
+        screw_insert(num_cols - 1, num_rows_for_col(num_cols - 1), edge_shape, 6.7, 11.2),
+        screw_insert(0, 0, edge_shape, -6.8, -9.9),
+        # screw_insert(0, max_num_rows - 1, shape, -17.4, -2),
+        screw_insert(1, max_num_rows + 1, thumb_shape, -25.7, 6.5),
     )
 
 
@@ -1193,7 +1207,7 @@ def right_shell():
             all_switches(),
             connectors(),
             case_walls(),
-            screw_insert_all_shapes(screw_insert_outer),
+            screw_insert_all_shapes(screw_insert_outer, screw_insert_outer_thumb),
             # all_caps(),
             thumb_switches(),
             thumb_walls(),
@@ -1206,7 +1220,7 @@ def right_shell():
         ),
         union(
             blocker(),
-            screw_insert_all_shapes(screw_insert_inner),
+            screw_insert_all_shapes(screw_insert_inner, screw_insert_inner_thumb),
             # trrs_holder_hole(),
             usb_holder_hole(),
         ),
@@ -1331,9 +1345,11 @@ def bottom_plate():
         ),
         union(
             screw_insert_all_shapes(
+                cylinderr1r2(screw_head_radius, screw_head_radius, screw_head_height),
                 cylinderr1r2(screw_head_radius, screw_head_radius, screw_head_height)
             ),
             screw_insert_all_shapes(
+                cylinderr1r2(screw_hole_radius, screw_hole_radius, bottom_height),
                 cylinderr1r2(screw_hole_radius, screw_hole_radius, bottom_height)
             ),
             # bottom_weight_cutouts(),

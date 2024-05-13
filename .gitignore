@@ -1,1 +1,5 @@
 __pycache__
+things/
+lib/
+lib64
+bin/
