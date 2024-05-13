@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "nicenano")(type "KiCad")(uri "${KIPRJMOD}/external/nice-nano-kicad-master")(options "")(descr ""))
+  (lib (name "nrfmicro")(type "KiCad")(uri "${KIPRJMOD}/external/nrfmicro.pretty")(options "")(descr ""))
+)

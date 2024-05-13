@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "nicenano")(type "KiCad")(uri "${KIPRJMOD}/external/nice-nano-kicad-master/nice_nano.kicad_sym")(options "")(descr ""))
+  (lib (name "nrfmicro")(type "KiCad")(uri "${KIPRJMOD}/external/nrfmicro.pretty/e73-2g4m08s1c-52840.kicad_sym")(options "")(descr ""))
+)

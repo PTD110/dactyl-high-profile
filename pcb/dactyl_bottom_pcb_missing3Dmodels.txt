@@ -1,0 +1,12 @@
+### Missing 3D models - created on 2022-08-05 20:03
+### Printed by checking_3D_models plugin
+Board file: D:\Users\Paulius\Documents\KiCad Projects\dactyl_bottom_pcb\dactyl_bottom_pcb.kicad_pcb
+3D missing models written to:
+D:\Users\Paulius\Documents\KiCad Projects\dactyl_bottom_pcb\dactyl_bottom_pcb_missing3Dmodels.txt
+-------
+('U1', '/Users/danny/Documents/proj/custom-keyboard/kicad-libs/3d_models/ArduinoProMicro.wrl')
+('J2', 'C:\\Program Files\\KiCad\\6.0\\share\\kicad\\3dmodels\\Connector_JST.3dshapes\\JST_SH_SM07B-SRSS-TB_1x07-1MP_P1.00mm_Horizontal.wrl')
+('J1', 'C:\\Program Files\\KiCad\\6.0\\share\\kicad\\3dmodels\\Connector_JST.3dshapes\\JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.wrl')
+-------
+NUM of 3D missing models:3
+checked extensions ['.stp', '.step', '.stpZ']
